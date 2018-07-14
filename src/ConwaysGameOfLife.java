@@ -1,4 +1,3 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -10,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
 
 /*
  *  1. Check out the Wikipedia page on Conway's Game of Life to familiarize yourself
@@ -60,9 +60,9 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
 		speedField = new JTextField();
 		
 		window.add(this);
-		this.setPreferredSize(new Dimension(WIDTH, 40+HEIGHT));
-		add(inputPanel);
-		add(gamePanel);
+		this.setPreferredSize(new Dimension(WIDTH, 30+HEIGHT));
+		this.add(inputPanel);
+		this.add(gamePanel);
 		inputPanel.add(startStopButton);
 		inputPanel.add(speedLabel);
 		inputPanel.add(speedField);
@@ -73,8 +73,8 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
 		randomizeButton.addActionListener(this);
 		clearButton.addActionListener(this);
 		
-		gamePanel.setBackground(Color.DARK_GRAY);
-		inputPanel.setPreferredSize(new Dimension(WIDTH, 40));
+		gamePanel.setBackground(Color.LIGHT_GRAY);
+		inputPanel.setPreferredSize(new Dimension(WIDTH, 30));
 		startStopButton.setText("START");
 		randomizeButton.setText("RANDOMIZE");
 		clearButton.setText("CLEAR");
@@ -107,10 +107,14 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
 		}
 			// toggle isRunning to the opposite of its current state
 			// start or stop the animation based on the state of isRunning
-		
+		if(e.getSource() == randomizeButton) {
+			gamePanel.randomizeCells();
+		}
 		// if ranomizeButton is pressed
 			// call randomizeCells
-		
+		if(e.getSource() == clearButton) {
+			gamePanel.clearCells();
+		}
 		// if clearButton is pressed
 			//call clearCells
 	}
