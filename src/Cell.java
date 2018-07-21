@@ -50,10 +50,10 @@ public class Cell implements Drawable {
 	public void draw(Graphics g) {
 		if (isAlive) {
 			g.setColor(Color.BLUE);
-			g.drawRect(getX(), getY(), cellSize, cellSize);
+			g.fillRect(getX(), getY(), cellSize, cellSize);
 		} else if (isAlive == false) {
 			g.setColor(Color.LIGHT_GRAY);
-			g.drawRect(getX(), getY(), cellSize, cellSize);
+			g.fillRect(getX(), getY(), cellSize, cellSize);
 		}
 
 	}

@@ -28,9 +28,9 @@ import javax.swing.border.Border;
  */
 
 public class ConwaysGameOfLife extends JPanel implements ActionListener{
-	public static final int WIDTH = 700;
-	public static final int HEIGHT = 700;
-	public static final int CELLS_PER_ROW = 350;
+	public static final int WIDTH = 1000;
+	public static final int HEIGHT = 1000;
+	public static final int CELLS_PER_ROW = 10;
 	
 	private boolean isRunning = false;
 	

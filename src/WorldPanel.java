@@ -29,9 +29,9 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		cells = new Cell[cpr][cpr];
 
 		// initialize each cell in the array
-		for (int i = 0; i < w; i+=cellSize) {
-			for (int j = 0; j < h; j+=cellSize) {
-				cells[i/2][j/2] = new Cell(i, j, cellSize);
+		for (int i = 0; i < w; i += cellSize) {
+			for (int j = 0; j < h; j += cellSize) {
+				cells[i / cellSize][j / cellSize] = new Cell(i, j, cellSize);
 			}
 		}
 
@@ -111,8 +111,8 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
 				if (x != i && y != j) {
-					if (x + i >= 0 && y + i >= 0 && x + i <= 349 && y + i <= 349
-							&& cells[x + i][y + i].isAlive == true) {
+					if (x + i >= 0 && y + j >= 0 && x + i <= cellsPerRow - 1 && y + j <= cellsPerRow - 1
+							&& cells[x + i][y + j].isAlive == true) {
 						livingNeighbors++;
 					}
 				}
@@ -145,8 +145,8 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// get the location of the mouse
-		int mouseX = e.getX()/2;
-		int mouseY = e.getY()/2;
+		int mouseX = e.getX() / cellSize;
+		int mouseY = e.getY() / cellSize;
 
 		// toggle the cell at that location to either alive or dead
 		// based on its current state
