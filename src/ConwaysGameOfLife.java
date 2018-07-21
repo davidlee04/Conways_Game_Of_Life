@@ -78,7 +78,7 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
 		startStopButton.setText("START");
 		randomizeButton.setText("RANDOMIZE");
 		clearButton.setText("CLEAR");
-		speedLabel.setText("SPEED:");
+		speedLabel.setText("DELAY:");
 		speedField.setPreferredSize(new Dimension(60, 20));
 		speedField.setText("60");
 		speedField.setEditable(true);
@@ -87,7 +87,6 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		window.pack();
 		isRunning = true;
-		gamePanel.startAnimation();
 	}
 	
 	@Override
@@ -95,13 +94,14 @@ public class ConwaysGameOfLife extends JPanel implements ActionListener{
 		//if startStopButton is pressed,
 		if(e.getSource() == startStopButton) {
 			if(isRunning) {
-				startStopButton.setText("STOP");
-				gamePanel.stopAnimation();
-				isRunning = false;
-			} else if(isRunning == false) {
 				startStopButton.setText("START");
-				gamePanel.startAnimation();
+				isRunning = false;
+				gamePanel.stopAnimation();
+			} else if(isRunning == false) {
+				startStopButton.setText("STOP");
 				isRunning = true;
+				gamePanel.setAnimationDelay(Integer.parseInt(speedField.getText()));
+				gamePanel.startAnimation();				
 			}
 			
 		}
