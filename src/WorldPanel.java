@@ -108,10 +108,11 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 	// cell identified by x and y
 	public int getLivingNeighbors(int x, int y) {
 		int livingNeighbors = 0;
+		int upperBound = cellsPerRow-1;
 		for (int i = -1; i < 2; i++) {
 			for (int j = -1; j < 2; j++) {
-				if (x != i && y != j) {
-					if (x + i >= 0 && y + j >= 0 && x + i <= cellsPerRow - 1 && y + j <= cellsPerRow - 1
+				if (i != 0 && j != 0) {
+					if (x + i >= 0 && y + j >= 0 && (x + i <= upperBound) && (y + j <= (upperBound))
 							&& cells[x + i][y + j].isAlive == true) {
 						livingNeighbors++;
 					}

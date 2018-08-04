@@ -25,13 +25,13 @@ public class Cell implements Drawable {
 	 * neighbours becomes a live cell, as if by reproduction. (source: Wikipedia)
 	 */
 	public void liveOrDie(int numNeighbors) {
-		if (numNeighbors < 2) {
+		if (numNeighbors < 2 && isAlive == true) {
 			isAlive = false;
-		} else if (numNeighbors == 2 || numNeighbors == 3) {
+		} else if (numNeighbors == 2 || numNeighbors == 3 && isAlive == true) {
 			isAlive = true;
-		} else if (numNeighbors > 3) {
+		} else if (numNeighbors > 3 && isAlive == true) {
 			isAlive = false;
-		} else if (numNeighbors == 3) {
+		} else if (numNeighbors == 3 && isAlive == false) {
 			isAlive = true;
 		}
 	}
