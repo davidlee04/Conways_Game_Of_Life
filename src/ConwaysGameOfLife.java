@@ -30,7 +30,7 @@ import javax.swing.border.Border;
 public class ConwaysGameOfLife extends JPanel implements ActionListener{
 	public static final int WIDTH = 1000;
 	public static final int HEIGHT = 1000;
-	public static final int CELLS_PER_ROW = 10;
+	public static final int CELLS_PER_ROW = 200;
 	
 	private boolean isRunning = false;
 	
